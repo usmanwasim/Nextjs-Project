@@ -8,10 +8,13 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 // import axios from 'axios';
 import UpdateDialog from './UpdateDialog';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function ContactList({ contacts }) {
     const [update, setUpdate] = useState(false);
     const [updateData, setUpdateData] = useState({});
+
+    const router = useRouter();
 
     // const [Data, setData] = useState();
     // const dispatch = useDispatch();
@@ -36,6 +39,7 @@ export default function ContactList({ contacts }) {
         })
             .then((response) => response.json())
             .then((data) => console.log(data));
+        router.replace(router.asPath);
     };
 
     return (

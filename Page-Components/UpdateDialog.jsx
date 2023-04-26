@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Button, Dialog, Stack } from '@mui/material';
+import { useRouter } from 'next/router';
 // import { url } from '../enviroment';
 // import axios from 'axios';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -9,6 +10,7 @@ import { useTheme } from '@mui/material/styles';
 
 export default function UpdateDialog({ open, close, data }) {
     // const dispatch = useDispatch();
+    const router = useRouter();
     const [update, setupdate] = useState();
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
@@ -34,6 +36,7 @@ export default function UpdateDialog({ open, close, data }) {
         })
             .then((response) => response.json())
             .then((data) => console.log(data));
+        router.replace(router.asPath);
     };
     return (
         <>
